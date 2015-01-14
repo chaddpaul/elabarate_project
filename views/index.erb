@@ -1,0 +1,17 @@
+<h1>Sorted By Region</h1>
+
+
+<ul>
+  <% @bars.each_with_index do |bar,id| %>
+  <li>
+    <p><a href="/home/b/<%= bar["name"]%>"><%= bar["name"]%></a></p>
+    <p><img src="<%=bar["picture"] %>"></p>
+    <p><%= bar["text"] %></p>
+    <p><%=bar["location"] %></p>
+    <p><a href="/home/r/<%= bar["region"] %>"><%= bar["region"] %></a></p>
+    <p><%=bar["author"] %></p>
+  </li>
+  <% end %>
+</ul>
+
+<a href="/home/new">Add A Bar</a>
