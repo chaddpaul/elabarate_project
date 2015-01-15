@@ -1,0 +1,52 @@
+.content {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.content h1{
+  text-align: left;
+  margin: 10px auto;
+}
+
+.content #homehead {
+  text-align: center;
+}
+
+.header h1 {
+  position: absolute;
+  color: coral;
+  top: -17px;
+  left: 535px;
+  font-size: 75px;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  height: 130px;
+}
+
+.home li {
+  display: inline-block;
+  list-style-type: none;
+  text-align: left;
+  width: 400px;
+  margin: 0 auto;
+  border: 5px solid green;
+}
+
+.home img {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+.region li {
+  list-style-type: none;
+  text-align: left;
+}
+
+.bar li {
+  list-style-type: none;
+  text-align: left;
+}

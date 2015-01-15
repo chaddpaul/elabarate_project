@@ -19,7 +19,7 @@ module BarApp
       @bars = ids.map do |id|
         $redis.hgetall("bar:#{id}")
       end
-      render(:erb,:index)
+      render(:erb,:index,{:layout => :default_layout})
     end
 # ///////////////////END HOME//////////////////////
 
@@ -38,7 +38,7 @@ module BarApp
           @region.push($redis.hgetall("bar:#{id}"))
         end
       end
-      render(:erb,:show_region)
+      render(:erb,:show_region,{:layout => :default_layout})
     end
 # ///////////////////END REGION/////////////////////
 
@@ -49,7 +49,7 @@ module BarApp
         $redis.hget("bar:#{id}","name")== params[:bar]
       end
       @bar = $redis.hgetall("bar:#{reference_id.join}")
-      render(:erb,:show_bar)
+      render(:erb,:show_bar,{:layout => :default_layout})
     end
 # ///////////////////END BAR////////////////////////
 

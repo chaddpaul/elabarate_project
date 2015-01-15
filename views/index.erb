@@ -1,10 +1,8 @@
-<h1>Sorted By Region</h1>
-
-
-<ul>
+<h1 id="homehead">Welcome to ela-Bar-ate</h1>
+<ul class="home">
   <% @bars.each_with_index do |bar,id| %>
   <li>
-    <p><a href="/home/b/<%= bar["name"]%>"><%= bar["name"]%></a></p>
+    <p><a href="/home/b/<%= bar["name"]%>"><strong><%= bar["name"]%></strong></a></p>
     <p><img src="<%=bar["picture"] %>"></p>
     <p><%= bar["text"] %></p>
     <p><%=bar["location"] %></p>
@@ -15,3 +13,5 @@
 </ul>
 
 <a href="/home/new">Add A Bar</a>
+
+

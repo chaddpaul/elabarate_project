@@ -1,10 +1,14 @@
 <h1>Checkout <%=@bar["name"]%></h1>
 
-<p><img src="<%= @bar["picture"] %>"></p>
-<p><%= @bar["text"] %></p>
-<p><%= @bar["location"] %></p>
-<p><%= @bar["region"] %></p>
-<p><%= @bar["author"] %></p>
+<ul class="bar">
+  <li>
+    <p><img src="<%= @bar["picture"] %>"></p>
+    <p><%= @bar["text"] %></p>
+    <p><%= @bar["location"] %></p>
+    <p><%= @bar["region"] %></p>
+    <p><%= @bar["author"] %></p>
+  </li>
+</ul>
 
 
 <a href="/home">Home</a>

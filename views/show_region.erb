@@ -1,7 +1,7 @@
 <h1>This is the region page</h1>
 
 
-<ul>
+<ul class="region">
   <% @region.each_with_index do |bar,id| %>
   <li>
     <p><a href="/home/b/<%= bar["name"]%>"><%= bar["name"]%></a></p>
@@ -14,5 +14,4 @@
   <% end %>
 </ul>
 
-<a href="/home/b/:bar">Check out Bar</a>
 <a href="/home">Home</a>
