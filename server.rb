@@ -16,9 +16,24 @@ module BarApp
 # ////////////////START HOME////////////////////////
     get('/home') do
       ids = $redis.lrange("bar_ids",0,-1)
-      @bars = ids.map do |id|
-        $redis.hgetall("bar:#{id}")
+
+      @ues_bars     = []
+      @uws_bars     = []
+      @les_bars     = []
+      @midtown_bars = []
+
+      ids.each do |id|
+        if ($redis.hget("bar:#{id}","region") == "UES")
+          @ues_bars.push($redis.hgetall("bar:#{id}"))
+        elsif ($redis.hget("bar:#{id}","region") == "UWS")
+          @uws_bars.push($redis.hgetall("bar:#{id}"))
+        elsif ($redis.hget("bar:#{id}","region") == "LES")
+          @les_bars.push($redis.hgetall("bar:#{id}"))
+        else
+          @midtown_bars.push($redis.hgetall("bar:#{id}"))
+        end
       end
+      binding.pry
       render(:erb,:index,{:layout => :default_layout})
     end
 # ///////////////////END HOME//////////////////////

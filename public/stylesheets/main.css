@@ -28,12 +28,10 @@
 }
 
 .home li {
-  display: inline-block;
   list-style-type: none;
   text-align: left;
   width: 400px;
   margin: 0 auto;
-  border: 5px solid green;
 }
 
 .home img {
@@ -50,3 +48,28 @@
   list-style-type: none;
   text-align: left;
 }
+
+.ues {
+  display: inline-block;
+  border: 5px solid green;
+  width:30%;
+  vertical-align: top;
+}
+
+.uws {
+  display: inline-block;
+  border: 5px solid red;
+  width: 30%;
+  vertical-align: top;
+}
+
+.les{
+  display: inline-block;
+  border: 5px solid blue;
+  width: 30%;
+  vertical-align: top;
+}
+
+
+
+
