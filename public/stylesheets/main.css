@@ -70,8 +70,18 @@
   vertical-align: top;
 }
 
+.midtown{
+  display: inline-block;
+  border: 5px solid grey;
+  width: 30%;
+  vertical-align: top;
+}
+
 .home p {
   width: 90%;
+}
+.home h3{
+  text-align: center;
 }
 
 

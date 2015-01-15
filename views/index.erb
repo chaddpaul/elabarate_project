@@ -2,6 +2,7 @@
 
 <div class="home">
   <div class="ues">
+    <h3><a href="/home/r/UES">Upper East Side</a></h3>
     <ul>
       <% @ues_bars.each_with_index do |bar,id| %>
       <li>
@@ -9,7 +10,6 @@
         <p><img src="<%=bar["picture"] %>"></p>
         <p><%= bar["text"] %></p>
         <p><%=bar["location"] %></p>
-        <p><a href="/home/r/<%= bar["region"] %>"><%= bar["region"] %></a></p>
         <p><%=bar["author"] %></p>
       </li>
       <% end %>
@@ -17,6 +17,7 @@
   </div>
 
   <div class="uws">
+    <h3><a href="/home/r/UWS">Upper West Side</a></h3>
     <ul>
       <% @uws_bars.each_with_index do |bar,id| %>
       <li>
@@ -24,7 +25,6 @@
         <p><img src="<%=bar["picture"] %>"></p>
         <p><%= bar["text"] %></p>
         <p><%=bar["location"] %></p>
-        <p><a href="/home/r/<%= bar["region"] %>"><%= bar["region"] %></a></p>
         <p><%=bar["author"] %></p>
       </li>
       <% end %>
@@ -32,6 +32,7 @@
   </div>
 
   <div class="les">
+    <h3><a href="/home/r/LES">Lower East Side</a></h3>
     <ul>
       <% @les_bars.each_with_index do |bar,id| %>
       <li>
@@ -39,7 +40,6 @@
         <p><img src="<%=bar["picture"] %>"></p>
         <p><%= bar["text"] %></p>
         <p><%=bar["location"] %></p>
-        <p><a href="/home/r/<%= bar["region"] %>"><%= bar["region"] %></a></p>
         <p><%=bar["author"] %></p>
       </li>
       <% end %>
@@ -47,6 +47,7 @@
   </div>
 
   <div class="midtown">
+    <h3><a href="/home/r/Midtown">Midtown</a></h3>
     <ul>
       <% @midtown_bars.each_with_index do |bar,id| %>
       <li>
@@ -54,7 +55,6 @@
         <p><img src="<%=bar["picture"] %>"></p>
         <p><%= bar["text"] %></p>
         <p><%=bar["location"] %></p>
-        <p><a href="/home/r/<%= bar["region"] %>"><%= bar["region"] %></a></p>
         <p><%=bar["author"] %></p>
       </li>
       <% end %>

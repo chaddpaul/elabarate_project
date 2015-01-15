@@ -1,6 +1,8 @@
 module BarApp
   class Server < Sinatra::Base
 
+    use Rack::MethodOverride
+
     configure :development do
       register Sinatra::Reloader
       require 'pry'
