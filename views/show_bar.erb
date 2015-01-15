@@ -10,5 +10,10 @@
   </li>
 </ul>
 
+  <form method="post" action="/home/b/<%= @bar["name"] %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Remove Bar">
+  </form>
+
 
 <a href="/home">Home</a>

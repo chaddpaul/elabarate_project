@@ -39,3 +39,39 @@ redis.hmset(
   "region", "LES"
   )
 redis.lpush("bar_ids",id)
+
+id = redis.incr("bar_id")
+redis.hmset(
+  "bar:#{id}",
+  "name", "Bailey's Pub",
+  "location", "85th and york",
+  "picture", "http://www.greendougherty.com/yorkville/Bailey's%20Bar.jpg",
+  "text", "I quite rangers / sports bar with darts cheep beer and an easy ability to get drinks from the bartender",
+  "author", "chaddpaul",
+  "region", "UES"
+  )
+redis.lpush("bar_ids",id)
+
+id = redis.incr("bar_id")
+redis.hmset(
+  "bar:#{id}",
+  "name", "The Gin Mill",
+  "location", "83rd and amsterdam",
+  "picture", "http://cbsnewyork.files.wordpress.com/2012/08/the-gin-mill.jpg",
+  "text", "A small but vibrant bar full of atmosphere and good food",
+  "author", "chaddpaul",
+  "region", "UWS"
+  )
+redis.lpush("bar_ids",id)
+
+id = redis.incr("bar_id")
+redis.hmset(
+  "bar:#{id}",
+  "name", "Cocktail's and Dreams",
+  "location", "80th and broadway",
+  "picture", "http://www.cnlegalnews.com/wp-content/uploads/2014/12/cocktails-and-dreams2.jpg",
+  "text", "The real birth place of the NYC bar scene. It can't be beat or even compared to.",
+  "author", "chaddpaul",
+  "region", "UWS"
+  )
+redis.lpush("bar_ids",id)

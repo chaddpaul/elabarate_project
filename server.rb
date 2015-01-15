@@ -33,7 +33,7 @@ module BarApp
           @midtown_bars.push($redis.hgetall("bar:#{id}"))
         end
       end
-      binding.pry
+      # binding.pry
       render(:erb,:index,{:layout => :default_layout})
     end
 # ///////////////////END HOME//////////////////////
@@ -84,5 +84,14 @@ module BarApp
       redirect to('/home')
     end
 # ///////////////////END POST////////////////////////
+
+# ////////////////START DELETE///////////////////////
+    delete('/home/b/:name') do
+      binding.pry
+      name = params[:name]
+      $redis.del("bar:#{name}")
+      redirect to('/home')
+    end
+
   end
 end
