@@ -58,13 +58,14 @@ module BarApp
       id = $redis.incr("bar_id")
       $redis.hmset(
         "bar:#{id}",
-        "name", params["name"],
-        "location", params["location"],
-        "picture", params["picture"],
-        "text", params["text"],
-        "region", params["region"],
-        "author", params["author"]
-        )
+        "name",      params["name"],
+        "location",  params["location"],
+        "picture",   params["picture"],
+        "text",      params["text"],
+        "region",    params["region"],
+        "author",    params["author"],
+        "timestamp", DateTime.now.to_s
+      )
       $redis.lpush("bar_ids",id)
       redirect to('/home')
     end
@@ -104,7 +105,14 @@ module BarApp
     end
 
     def bars_by_region
-      bars.group_by {|bar| bar["region"]}
+      bars_by_region = bars.group_by {|bar| bar["region"]}
+
+      # sort each array of bars by their timestamps
+      bars_by_region.each do |region, bars|
+        sorted_bar_list = bars.sort_by { |bar| bar["timestamp"] }
+        # now, replace the current regions list of bars by the sorted list version
+        bars_by_region[region] = sorted_bar_list.reverse
+      end
     end
 
 
