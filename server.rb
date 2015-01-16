@@ -89,11 +89,30 @@ module BarApp
 
 # ////////////////START DELETE///////////////////////
     delete('/home/b/:name') do
-      binding.pry
-      name = params[:name]
-      $redis.del("bar:#{name}")
+      delete_bar bar_list[params[:name]]
       redirect to('/home')
     end
+
+
+    def bar_ids
+      $redis.lrange("bar_ids",0,-1)
+    end
+
+    def bar_name(id)
+      $redis.hget "bar:#{id}", "name"
+    end
+
+    def bar_list
+      bar_ids.map {|id| [bar_name(id), id] }.to_h
+    end
+
+    def delete_bar(id)
+      # delete the value
+      $redis.del("bar:#{id}")
+      # delete from list of keys
+      $redis.lrem("bar_ids",0,id)
+    end
+
 
   end
 end
