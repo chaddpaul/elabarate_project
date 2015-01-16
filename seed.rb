@@ -1,4 +1,5 @@
 require 'redis'
+require 'date'
 
 redis = Redis.new
 redis.flushdb
@@ -12,7 +13,8 @@ redis.hmset(
   "picture", "http://www.penrosebar.com/IMG/home05.jpg",
   "text", "An upscale bar with modestly priced drinks, a solid atmosphere, and a sophisticated crowd",
   "author", "chaddpaul",
-  "region", "UES"
+  "region", "UES",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)
 
@@ -24,7 +26,8 @@ redis.hmset(
   "picture", "https://cbsnewyork.files.wordpress.com/2011/10/b-bar.jpg",
   "text", "A hopping location downtown with a younger crowd. It has three bars and can always be considered a good time",
   "author", "chaddpaul",
-  "region", "LES"
+  "region", "LES",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)
 
@@ -36,7 +39,8 @@ redis.hmset(
   "picture", "http://katesdougherty.files.wordpress.com/2012/01/the-wren-02.jpg",
   "text", "The wren is a smaller venue but in small things come great packages. It is a vibrant young crowd and a very happy atmosphere",
   "author", "chaddpaul",
-  "region", "LES"
+  "region", "LES",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)
 
@@ -48,7 +52,8 @@ redis.hmset(
   "picture", "http://www.greendougherty.com/yorkville/Bailey's%20Bar.jpg",
   "text", "I quite rangers / sports bar with darts cheep beer and an easy ability to get drinks from the bartender",
   "author", "chaddpaul",
-  "region", "UES"
+  "region", "UES",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)
 
@@ -60,7 +65,8 @@ redis.hmset(
   "picture", "http://cbsnewyork.files.wordpress.com/2012/08/the-gin-mill.jpg",
   "text", "A small but vibrant bar full of atmosphere and good food",
   "author", "chaddpaul",
-  "region", "UWS"
+  "region", "UWS",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)
 
@@ -72,6 +78,7 @@ redis.hmset(
   "picture", "http://www.cnlegalnews.com/wp-content/uploads/2014/12/cocktails-and-dreams2.jpg",
   "text", "The real birth place of the NYC bar scene. It can't be beat or even compared to.",
   "author", "chaddpaul",
-  "region", "UWS"
+  "region", "UWS",
+  "timestamp", DateTime.now.to_s
   )
 redis.lpush("bar_ids",id)

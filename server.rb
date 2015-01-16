@@ -17,7 +17,9 @@ module BarApp
 
 # ////////////////START HOME////////////////////////
     get('/home') do
-      ids = $redis.lrange("bar_ids",0,-1)
+
+      ids = bar_ids
+      binding.pry
 
       @ues_bars     = []
       @uws_bars     = []

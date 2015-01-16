@@ -1,3 +1,4 @@
+require 'date'
 require 'redis'
 require 'sinatra/base'
 require 'sinatra/reloader'
