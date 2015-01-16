@@ -17,27 +17,8 @@ module BarApp
 
 # ////////////////START HOME////////////////////////
     get('/home') do
+      @bars_by_region = bars_by_region
 
-      ids = bar_ids
-      binding.pry
-
-      @ues_bars     = []
-      @uws_bars     = []
-      @les_bars     = []
-      @midtown_bars = []
-
-      ids.each do |id|
-        if ($redis.hget("bar:#{id}","region") == "UES")
-          @ues_bars.push($redis.hgetall("bar:#{id}"))
-        elsif ($redis.hget("bar:#{id}","region") == "UWS")
-          @uws_bars.push($redis.hgetall("bar:#{id}"))
-        elsif ($redis.hget("bar:#{id}","region") == "LES")
-          @les_bars.push($redis.hgetall("bar:#{id}"))
-        else
-          @midtown_bars.push($redis.hgetall("bar:#{id}"))
-        end
-      end
-      # binding.pry
       render(:erb,:index,{:layout => :default_layout})
     end
 # ///////////////////END HOME//////////////////////
@@ -95,6 +76,9 @@ module BarApp
       redirect to('/home')
     end
 
+    def bar(id)
+      $redis.hgetall("bar:#{id}")
+    end
 
     def bar_ids
       $redis.lrange("bar_ids",0,-1)
@@ -114,6 +98,15 @@ module BarApp
       # delete from list of keys
       $redis.lrem("bar_ids",0,id)
     end
+
+    def bars
+      bar_ids.map {|id| bar(id)}
+    end
+
+    def bars_by_region
+      bars.group_by {|bar| bar["region"]}
+    end
+
 
 
   end

@@ -1,10 +1,12 @@
 <h1 id="homehead">Welcome to ela-Bar-ate</h1>
 
 <div class="home">
-  <div class="ues">
-    <h3><a href="/home/r/UES">Upper East Side</a></h3>
+
+  <% @bars_by_region.each do |region, bars| %>
+  <div class="<%= region.downcase %>">
+    <h3><a href="/home/r/<%= region %>"><%= region %></a></h3>
     <ul>
-      <% @ues_bars.each_with_index do |bar,id| %>
+      <% bars.each_with_index do |bar,id| %>
       <li>
         <p><a href="/home/b/<%= bar["name"]%>"><strong><%= bar["name"]%></strong></a></p>
         <p><img src="<%=bar["picture"] %>"></p>
@@ -15,53 +17,7 @@
       <% end %>
     </ul>
   </div>
-
-  <div class="uws">
-    <h3><a href="/home/r/UWS">Upper West Side</a></h3>
-    <ul>
-      <% @uws_bars.each_with_index do |bar,id| %>
-      <li>
-        <p><a href="/home/b/<%= bar["name"]%>"><strong><%= bar["name"]%></strong></a></p>
-        <p><img src="<%=bar["picture"] %>"></p>
-        <p><%= bar["text"] %></p>
-        <p><%=bar["location"] %></p>
-        <p><%=bar["author"] %></p>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="les">
-    <h3><a href="/home/r/LES">Lower East Side</a></h3>
-    <ul>
-      <% @les_bars.each_with_index do |bar,id| %>
-      <li>
-        <p><a href="/home/b/<%= bar["name"]%>"><strong><%= bar["name"]%></strong></a></p>
-        <p><img src="<%=bar["picture"] %>"></p>
-        <p><%= bar["text"] %></p>
-        <p><%=bar["location"] %></p>
-        <p><%=bar["author"] %></p>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="midtown">
-    <h3><a href="/home/r/Midtown">Midtown</a></h3>
-    <ul>
-      <% @midtown_bars.each_with_index do |bar,id| %>
-      <li>
-        <p><a href="/home/b/<%= bar["name"]%>"><strong><%= bar["name"]%></strong></a></p>
-        <p><img src="<%=bar["picture"] %>"></p>
-        <p><%= bar["text"] %></p>
-        <p><%=bar["location"] %></p>
-        <p><%=bar["author"] %></p>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
+  <% end %>
 
 <a href="/home/new">Add A Bar</a>
 
