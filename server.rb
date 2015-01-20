@@ -13,7 +13,7 @@ module BarApp
     get('/') do
       redirect to('/home')
     end
-# ///////////////////END Original get///////////////
+# //////////////END Original get////////////////////
 
 # ////////////////START HOME////////////////////////
     get('/home') do
@@ -21,17 +21,17 @@ module BarApp
 
       render(:erb,:index,{:layout => :default_layout})
     end
-# ///////////////////END HOME//////////////////////
+# /////////////////END HOME/////////////////////////
 
-# ////////////////START NEW////////////////////////
+# ////////////////START NEW/////////////////////////
     get('/home/new') do
       render(:erb,:new)
     end
-# ///////////////////END NEW////////////////////////
+# ////////////////END NEW///////////////////////////
 
 # ////////////////START REGION//////////////////////
     get('/home/r/:region') do
-      ids = $redis.lrange("bar_ids",0,-1)
+      ids = bar_ids
       @region = []
       ids.each do |id|
         if $redis.hget("bar:#{id}","region")== params[:region]
@@ -44,9 +44,9 @@ module BarApp
 
 # ////////////////START BAR/////////////////////////
     get('/home/b/:bar') do
-      ids = $redis.lrange("bar_ids",0,-1)
+      ids = bar_ids
       reference_id = ids.select do |id|
-        $redis.hget("bar:#{id}","name")== params[:bar]
+        bar_name(id) == params[:bar]
       end
       @bar = $redis.hgetall("bar:#{reference_id.join}")
       render(:erb,:show_bar,{:layout => :default_layout})
@@ -76,9 +76,9 @@ module BarApp
       delete_bar bar_list[params[:name]]
       redirect to('/home')
     end
+# /////////////////END DELETE////////////////////////
 
-
-# ////////////////A BUNCH OF METHODS///////////////////
+# ////////////////A BUNCH OF METHODS/////////////////
     def bar(id)
       $redis.hgetall("bar:#{id}")
     end
@@ -117,6 +117,5 @@ module BarApp
       end
     end
 # ////////////////A BUNCH OF METHODS///////////////////
-
   end
 end
