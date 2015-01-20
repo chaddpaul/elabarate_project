@@ -77,6 +77,8 @@ module BarApp
       redirect to('/home')
     end
 
+
+# ////////////////A BUNCH OF METHODS///////////////////
     def bar(id)
       $redis.hgetall("bar:#{id}")
     end
@@ -114,8 +116,7 @@ module BarApp
         bars_by_region[region] = sorted_bar_list.reverse
       end
     end
-
-
+# ////////////////A BUNCH OF METHODS///////////////////
 
   end
 end
