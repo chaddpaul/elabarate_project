@@ -9,6 +9,10 @@ module BarApp
       $redis = Redis.new
     end
 
+    configure :production do
+      $redis = Redis.new({url: ENV['REDISTOGO_URL']})
+    end
+
 # //////////////START Original Get//////////////////
     get('/') do
       redirect to('/home')
