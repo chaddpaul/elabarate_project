@@ -1,7 +1,8 @@
 require 'redis'
 require 'date'
 
-redis = Redis.new
+redis = Redis.new({url: ENV['REDISTOGO_URL']})
+# redis  = Redis.new
 redis.flushdb
 redis.set("bar_id",0)
 
